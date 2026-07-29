@@ -7,6 +7,7 @@
     ../../modules/programs/nvim
     ../../modules/programs/tmux
     ../../modules/programs/git
+    ../../modules/programs/zsh
   ];
 
   home.stateVersion = "26.05";
