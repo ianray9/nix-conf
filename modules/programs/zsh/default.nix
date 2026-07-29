@@ -40,7 +40,7 @@
       }
     ];
 
-    initExtra = ''
+    initContent = ''
       autoload -Uz compinit
       compinit -d ~/.cache/zsh/zcompdump
 
