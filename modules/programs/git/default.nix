@@ -3,15 +3,16 @@
   programs.git = {
     enable = true;
 
-    userName = "ianray9";
-    userEmail = "ianrayburn9@gmail.com";
-
     extraConfig = {
       init.defaultBranch = "main";
 
       status = {
         branch = true;
         showStash = true;
+      };
+
+      delta = {
+        enable = true;
       };
 
       pull.rebase = false;

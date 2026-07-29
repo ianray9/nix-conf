@@ -11,5 +11,12 @@
 
   home.stateVersion = "26.05";
 
-  programs.home-manager.enable = true;
+  programs = {
+    git = {
+      userName = "ianray9";
+      userEmail = "ianrayburn9@gmail.com";
+    };
+
+    home-manager.enable = true;
+  };
 }
