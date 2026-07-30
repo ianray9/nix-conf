@@ -26,7 +26,8 @@
     };
 
     shellAliases = {
-      la = "ls -lah";
+      ls = "ls --color";
+      la = "ls --color -lah";
       gs = "git status";
       ".." = "cd ..";
       pub-ip = "curl ipinfo.io/ip";
