@@ -22,7 +22,7 @@
       rerere.enabled = true;
 
       core.editor = "nvim";
-      url."https://github.com/ianray9".insteadOf = "ianray9:";
+      url."https://github.com/ianray9/".insteadOf = "ianray9:";
     };
   };
 }
