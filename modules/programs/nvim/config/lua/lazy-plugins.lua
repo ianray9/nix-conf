@@ -65,6 +65,11 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
 }, {
+  -- Keep lazy.nvim generated state outside ~/.config/nvim.
+  -- Home Manager may make ~/.config/nvim immutable via the Nix store,
+  -- so the lockfile needs to live in Neovim's writable data directory.
+  lockfile = vim.fn.stdpath 'data' .. '/lazy-lock.json',
+
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table

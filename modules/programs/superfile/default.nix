@@ -1,15 +1,15 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  programs.superfile = {
-    enable = true;
+  programs.superfile.enable = true;
 
-    settings = {
-      theme = "everforest-dark-medium";
-      transparent_background = true;
-    };
-  };
+  home.file = {
+    "Library/Application Support/superfile/config.toml".source =
+      ./config.toml;
 
-  xdg.configFile = {
-    "superfile/hotkey.toml".source = ./vim-hotkeys.toml;
+    "Library/Application Support/superfile/hotkeys.toml".source =
+      ./hotkeys.toml;
+
+    "Library/Application Support/superfile/theme/everforest-dark-medium.toml".source =
+      ./themes/everforest-dark-medium.toml;
   };
 }
