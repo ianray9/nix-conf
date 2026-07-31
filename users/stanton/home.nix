@@ -8,6 +8,7 @@
     ../../modules/programs/tmux
     ../../modules/programs/git
     ../../modules/programs/zsh
+    ../../modules/programs/superfile
   ];
 
   home.stateVersion = "26.05";
