@@ -1,10 +1,16 @@
 { pkgs, ... }:
 let
-  updateAlias =
+  UPDATE_CMD =
     if pkgs.stdenv.hostPlatform.isDarwin then
       "sudo darwin-rebuild switch --flake ~/.config/nix"
     else
       "sudo nixos-rebuild switch --flake ~/.config/nix";
+
+  COPY_CMD =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      "| pbcopy"
+    else
+      "| wl-copy";
 in
 {
   programs.zsh = {
@@ -37,7 +43,7 @@ in
     };
 
     shellAliases = {
-      update = updateAlias;
+      update = UPDATE_CMD;
 
       ls = "ls --color";
       la = "ls --color -lah";
@@ -51,6 +57,7 @@ in
     shellGlobalAliases = {
       nix-conf = "~/.config/nix";
       nvim-conf = "~/.config/nix/modules/programs/nvim/config";
+      BUF = COPY_CMD;
       NO_ERROR = "> /dev/null 2>&1";
     };
 
