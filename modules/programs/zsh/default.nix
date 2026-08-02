@@ -85,7 +85,9 @@ in
       ];
 
       initContent = ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        if [[ $OSTYPE == darwin* && $CPUTYPE == arm64 ]]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
 
         autoload -Uz compinit
         compinit -d ~/.cache/zsh/zcompdump
