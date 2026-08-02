@@ -4,17 +4,19 @@
     enable = true;
 
     onActivation = {
+      cleanup = "zap";
       autoUpdate = true;
       upgrade = true;
-      cleanup = "zap";
     };
 
-    brews = [ ];
-
-    taps = [ ];
+    brews = [
+    ];
 
     casks = [
       "vicinae"
+    ];
+
+    taps = [
     ];
   };
 }

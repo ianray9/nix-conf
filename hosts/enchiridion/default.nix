@@ -1,8 +1,10 @@
 { pkgs, ... }:
 {
   imports = [
-      ../../modules/darwin/packages.nix
+      ../../modules/darwin
   ];
+
+  system.primaryUser = "ianrayburn";
   
   users.users.ianrayburn = {
     name = "ianrayburn";
@@ -17,6 +19,5 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
-  
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
