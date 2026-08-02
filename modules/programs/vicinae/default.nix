@@ -1,38 +1,64 @@
-  # isDarwin = pkgs.stdenv.isDarwin;
-  # home.sessionVariables = lib.mkIf isDarwin {
-  #   VICINAE_PLATFORM = "macos";
-  # };
-  # home.packages =
-  #   [ pkgs.vicinae ]
-  #   ++ lib.optionals pkgs.stdenv.isLinux [
-  #     pkgs.wl-clipboard
-  # ];
 { pkgs, lib, ... }:
 let
-  tomlFormat = pkgs.formats.toml { };
+  vicinaeConfig = {
+    close_on_focus_loss = true;
+    consider_preedit = true;
+    pop_to_root_on_close = true;
+    favicon_service = "twenty";
+    search_files_in_root = true;
+
+
+    launcher_window = {
+      opacity = 0.98;
+      blur = true;
+    };
+  };
+
+  vicinaeSettings = {
+    global_shortcuts = {
+      toggle = "control+SPACE";
+    };
+
+    font = {
+      normal = {
+        size = 12;
+        family = "Jetbrains Mono";
+      };
+    };
+
+    theme = {
+      light = {
+        name = "vicinae-light";
+        icon_theme = "default";
+      };
+
+      dark = {
+        name = "evergarden-spring";
+        icon_theme = "default";
+      };
+    };
+
+    imports = [ ];
+  };
+
 in
 {
-  home.packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-    pkgs.vicinae
-  ];
+  programs.vicinae = lib.mkIf pkgs.stdenv.isLinux {
+    enable = true;
 
-  xdg.configFile."vicinae/config.toml".source = tomlFormat.generate "config" {
-    lib.generators.toTOML {} {
-
-      theme = "system";
-
-      window = {
-        width = if pkgs.stdenv.hostPlatform.isDarwin then 720 else 760;
-        height = 500;
-      };
-
-      clipboard = {
-        enabled = true;
-        history_size = 100;
-      };
-
-      search = {
-        show_icons = true;
-      };
+    systemd = {
+      enable = true;
+      autoStart = true;
+      # Maybe have to add somewhere else on arch (where ever paths are set)
+      # environment = {
+      #   USE_LAYER_SHELL = "1";
+      # };
+    };
   };
+
+  xdg.configFile."vicinae/config.json".text =
+    builtins.toJSON vicinaeConfig;
+
+  xdg.configFile."vicinae/settings.json".text = 
+    builtins.toJSON vicinaeSettings;
 }
