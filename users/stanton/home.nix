@@ -9,6 +9,7 @@
     ../../modules/programs/git
     ../../modules/programs/zsh
     ../../modules/programs/superfile
+    ../../modules/programs/vicinae
   ];
 
   home.stateVersion = "26.05";
