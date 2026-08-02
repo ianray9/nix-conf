@@ -85,6 +85,8 @@ in
       ];
 
       initContent = ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+
         autoload -Uz compinit
         compinit -d ~/.cache/zsh/zcompdump
 
