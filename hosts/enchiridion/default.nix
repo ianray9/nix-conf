@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-      ../../modules/darwin
+    ../../modules/platforms/darwin
   ];
 
   system.primaryUser = "ianrayburn";
@@ -11,7 +11,7 @@
     home = "/Users/ianrayburn";
   };
 
-  home-manager.users.ianrayburn = import ../../users/stanton/home.nix;
+  home-manager.users.ianrayburn = import ./home.nix;
   home-manager.backupFileExtension = "backup";
 
   nix.settings.experimental-features = "nix-command flakes";

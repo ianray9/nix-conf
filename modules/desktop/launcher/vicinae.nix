@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
   vicinaeConfig = {
     close_on_focus_loss = true;
@@ -43,22 +43,24 @@ let
 
 in
 {
-  programs.vicinae = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-
-    systemd = {
+  config = lib.mkIf (config.my.desktop.launcher == "vicinae") {
+    programs.vicinae = lib.mkIf pkgs.stdenv.isLinux {
       enable = true;
-      autoStart = true;
-      # Maybe have to add somewhere else on arch (where ever paths are set)
-      # environment = {
-      #   USE_LAYER_SHELL = "1";
-      # };
+
+      systemd = {
+        enable = true;
+        autoStart = true;
+        # Maybe have to add somewhere else on arch (where ever paths are set)
+        # environment = {
+        #   USE_LAYER_SHELL = "1";
+        # };
+      };
     };
+
+    xdg.configFile."vicinae/config.json".text =
+      builtins.toJSON vicinaeConfig;
+
+    xdg.configFile."vicinae/settings.json".text = 
+      builtins.toJSON vicinaeSettings;
   };
-
-  xdg.configFile."vicinae/config.json".text =
-    builtins.toJSON vicinaeConfig;
-
-  xdg.configFile."vicinae/settings.json".text = 
-    builtins.toJSON vicinaeSettings;
 }

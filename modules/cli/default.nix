@@ -1,11 +1,12 @@
-{ pkgs, ... }:
+{ lib, ... }:
 {
-  home.packages = with pkgs; [
-    curl
-    glow
-    ripgrep
-    tree
-    wget
+  imports = [
+    ./tmux.nix
+    ./superfile
   ];
-}
 
+  config.my.cli = {
+    tmux.enable = lib.mkDefault true;
+    superfile.enable = lib.mkDefault true;
+  };
+}

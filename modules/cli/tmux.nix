@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 let
   bg_     = "#2D353B"; # matches terminal background
   fg_     = "#D3C6AA"; # main foreground
@@ -26,10 +26,12 @@ let
   cpuPlugin = pkgs.tmuxPlugins.cpu;
 in
 {
-  programs.tmux = {
-    enable = true;
+  options.my.cli.tmux.enable = lib.mkEnableOption "tmux";
+  config = lib.mkIf config.my.cli.tmux.enable {
+    programs.tmux = {
+      enable = true;
 
-    extraConfig = ''
+      extraConfig = ''
       set -g default-terminal "xterm-256color"
       set -ag terminal-overrides ",xterm-256color:RGB"
       set-option -g default-shell ${pkgs.zsh}/bin/zsh
@@ -69,6 +71,7 @@ in
       setw -g pane-base-index 1
 
       run-shell ${cpuPlugin}/share/tmux-plugins/cpu/cpu.tmux
-    '';
+      '';
+    };
   };
 }
