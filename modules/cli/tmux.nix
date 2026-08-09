@@ -47,6 +47,8 @@ in
       bind-key k select-pane -U
       bind-key l select-pane -R
 
+      setw -g mode-keys vi
+
       set-option -g bell-action none
       set-option -g status-position top
       set -g status-justify left
