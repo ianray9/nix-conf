@@ -16,6 +16,8 @@
 
         mouse-hide-while-typing = true;
 
+        copy-on-select = true;
+
         cursor-style = "block";
         shell-integration-features = "no-cursor";
 
