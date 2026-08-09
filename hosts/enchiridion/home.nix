@@ -1,16 +1,8 @@
 { lib, ... }:
 {
   imports = [
-    ../../modules/shell
-    ../../modules/cli
-    ../../modules/dev
-    ../../modules/desktop
-    ../../modules/packages
-    ../../modules/core
-
-    ../../modules/platforms
-
     ../../users/stanton/home.nix
+    ../../modules/llms
   ];
 
   my = {
@@ -23,6 +15,10 @@
     platform = {
       rebuildCmd = "sudo darwin-rebuild switch --flake ~/.config/nix";
       clipboardCmd = "pbcopy";
+    };
+
+    llms.llama-cpp = {
+      cuda = false;
     };
   };
 }
