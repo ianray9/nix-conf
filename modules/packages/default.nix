@@ -8,7 +8,9 @@
     home.packages = with pkgs; [
       bat
       curl
+      fd
       glow
+      htop
       jq
       ripgrep
       tree
