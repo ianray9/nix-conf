@@ -22,14 +22,11 @@
 
     shellGlobalAliases = {
       nix-conf = "~/.config/nix";
-      nvim-conf =
-        "~/.config/nix/modules/programs/nvim/config";
+      nvim-conf = "~/.config/nix/modules/programs/nvim/config";
 
-      BUF =
-        "| ${config.my.platform.clipboardCmd}";
+      BUF = "| ${config.my.platform.clipboardCmd}";
 
-      NO_ERROR =
-        "> /dev/null 2>&1";
+      NO_ERROR = "2>/dev/null";
     };
   };
 }
