@@ -17,12 +17,5 @@
 
       default = "vicinae";
     };
-
-    wm = lib.mkOption {
-      type = lib.types.enum [
-        "aerospace"
-        "hyprland"
-      ];
-    };
   };
 }

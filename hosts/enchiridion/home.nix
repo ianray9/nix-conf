@@ -9,7 +9,6 @@
     desktop = {
       terminal = lib.mkDefault "ghostty";
       launcher = lib.mkDefault "vicinae";
-      wm = lib.mkDefault "aerospace";
     };
 
     platform = {

@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 {
   options.my.dev.nvim.enable = lib.mkEnableOption "nvim";
 
@@ -8,6 +8,11 @@
 
       defaultEditor = true;
       viAlias = true;
+
+      extraPackages = with pkgs; [
+        nodejs
+        go
+      ];
     };
 
     xdg.configFile."nvim".source = ./config;
