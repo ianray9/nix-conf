@@ -2,6 +2,8 @@
 {
   programs.zsh = {
     shellAliases = {
+      alias-help = "cat ~/.config/nix/modules/shell/aliases.nix";
+
       build = config.my.platform.rebuildCmd;
 
       ls = "ls --color";
@@ -9,6 +11,8 @@
       rm = "rm -I";
 
       ".." = "cd ..";
+
+      v = "nvim";
 
       zmv = "zmv -n";
       zmv-e = "zmv";
