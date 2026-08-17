@@ -10,11 +10,19 @@
       curl
       fd
       glow
-      htop
       jq
       ripgrep
       tree
       wget
     ];
+
+    programs.btop = {
+      enable = true;
+      settings = {
+        theme_background = false;
+        truecolor = true;
+        color_theme = "Default";
+      };
+    };
   };
 }
