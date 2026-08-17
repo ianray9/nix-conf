@@ -17,8 +17,19 @@
       clipboardCmd = "pbcopy";
     };
 
-    llms.llama-cpp = {
-      cuda = false;
+    llms = {
+      profile = "m1-32gb";
+
+      backend = {
+        type = "lemonade";
+        host = "127.0.0.1";
+        port = 13305;
+      };
+
+      opencode = {
+        enable = true;
+      };
     };
   };
 }
+
