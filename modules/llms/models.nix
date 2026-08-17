@@ -1,19 +1,40 @@
-{ config, pkgs, ... }:
-let
-  modelsPreset = (pkgs.formats.ini {}).generate "llama-models.ini" {
-    "*" = {
-      "n-gpu-layers" = 999;
-      "flash-attn" = true;
-      "ctx-size" = config.my.llms.llama-cpp.contextSize;
-    };
-
-    "QuantFactory/SmolLM2-135M-Instruct-GGUF:Q4_K_M" = {
-      alias = "smollm";
-      temp = 0.7;
-    };
+{ config, lib, ... }:
+{
+  options.my.llms.opencode.models = lib.mkOption {
+    type = lib.types.attrs;
+    default = {};
+    description = ''
+      Models exposed to OpenCode through Lemonade.
+      Model files themselves are managed by Lemonade.
+    '';
   };
 
-in
-{
-  home.file.".config/llama.cpp/models.ini".source = modelsPreset;
+  config.my.llms.opencode.models = {
+    "Qwen3-0.6B-GGUF" = {
+      name = "Qwen3 0.6B";
+
+      limit = {
+        context = 40960;
+        output = 8192;
+      };
+    };
+
+    "Gemma-4-12B-it-MTP-GGUF" = {
+      name = "Gemma4 12B it MTP";
+
+      limit = {
+        context = 40960;
+        output = 8192;
+      };
+    };
+
+    "Qwen3.5-9B-GGUF" = {
+      name = "Qwen3.5 9B";
+
+      limit = {
+        context = 40960;
+        output = 8192;
+      };
+    };
+  };
 }
