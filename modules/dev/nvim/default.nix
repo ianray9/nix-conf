@@ -12,6 +12,7 @@
       extraPackages = with pkgs; [
         nodejs
         go
+        tree-sitter
       ];
     };
 

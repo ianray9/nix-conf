@@ -76,3 +76,19 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
+
+vim.g.mkdp_browser = '/usr/bin/firefox'
+
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = '*',
+--   callback = function(args)
+--     pcall(vim.treesitter.start, args.buf)
+--   end,
+-- })
