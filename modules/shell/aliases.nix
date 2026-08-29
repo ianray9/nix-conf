@@ -26,7 +26,7 @@
 
     shellGlobalAliases = {
       nix-conf = "~/.config/nix";
-      nvim-conf = "~/.config/nix/modules/programs/nvim/config";
+      nvim-conf = "~/.config/nix/modules/dev/nvim/config";
 
       BUF = "| ${config.my.platform.clipboardCmd}";
 
