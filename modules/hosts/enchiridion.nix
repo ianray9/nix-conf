@@ -24,9 +24,10 @@
             self.homeModules.superfile
             self.homeModules.nvim
 
+            self.homeModules.packages
+
             ../_legacy/shell
             ../_legacy/desktop
-            ../_legacy/packages
             ../_legacy/platforms
             ../_legacy/llms
           ];

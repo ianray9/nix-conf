@@ -1,10 +1,6 @@
-{ lib, pkgs, config, ... }:
+{ ... }:
 {
-  imports = [
-    ./options.nix
-  ];
-
-  config = lib.mkIf config.my.packages.enable {
+  flake.homeModules.packages = { lib, pkgs, config, ... }: {
     home.packages = with pkgs; [
       bat
       curl
