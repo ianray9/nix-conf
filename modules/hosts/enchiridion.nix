@@ -26,7 +26,8 @@
 
             self.homeModules.packages
 
-            ../_legacy/shell
+            self.homeModules.zsh
+
             ../_legacy/desktop
             ../_legacy/platforms
             ../_legacy/llms
