@@ -12,8 +12,12 @@
       home-manager.enable = true;
     };
 
-    my.git.enable = true;
-    my.tmux.enable = true;
-    my.superfile.enable = true;
+    my = {
+      git.enable = true;
+      tmux.enable = true;
+      superfile.enable = true;
+
+      nvim.enable = true;
+    };
   };
 }

@@ -22,9 +22,9 @@
             self.homeModules.git
             self.homeModules.tmux
             self.homeModules.superfile
+            self.homeModules.nvim
 
             ../_legacy/shell
-            ../_legacy/dev
             ../_legacy/desktop
             ../_legacy/packages
             ../_legacy/platforms
