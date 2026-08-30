@@ -1,8 +1,15 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "Stanton Nix configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    import-tree.url = "github:vic/import-tree";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -15,18 +22,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, ... }:
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#enchiridion
-    darwinConfigurations."enchiridion" = nix-darwin.lib.darwinSystem {
-      modules = [
-        ./hosts/enchiridion
-        home-manager.darwinModules.home-manager
-        {
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-        }
-      ];
-    };
-  };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; }
+      (inputs.import-tree ./modules);
 }
