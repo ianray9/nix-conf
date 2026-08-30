@@ -1,5 +1,4 @@
-{ ... }:
-
+{ self, ... }:
 {
   flake.homeModules.stanton = {
     home.stateVersion = "26.05";
@@ -12,5 +11,9 @@
 
       home-manager.enable = true;
     };
+
+    my.git.enable = true;
+    my.tmux.enable = true;
+    my.superfile.enable = true;
   };
 }
