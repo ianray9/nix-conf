@@ -46,7 +46,7 @@
     in
     {
       config = lib.mkIf (config.my.desktop.launcher == "vicinae") {
-        programs.vicinae = lib.mkIf pkgs.stdenv.isLinux {
+        programs.vicinae = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
           enable = true;
 
           systemd = {
