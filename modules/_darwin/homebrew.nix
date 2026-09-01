@@ -17,7 +17,6 @@
       "vicinae"
     ];
 
-    taps = [
-    ];
+    taps = [ ];
   };
 }

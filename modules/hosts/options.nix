@@ -13,6 +13,5 @@
       default = "cat";
       description = "Clipboard copy command";
     };
-
   };
 }
