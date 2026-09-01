@@ -13,6 +13,8 @@
     };
 
     my = {
+      nix.gc.enable = true;
+
       git.enable = true;
       tmux.enable = true;
       superfile.enable = true;

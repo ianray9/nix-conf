@@ -19,12 +19,13 @@
 
         home-manager.users.ianrayburn = {
           imports = [
+            ../_nix/gc.nix
+
             ./options.nix
             ../desktop/options.nix
             ../llms/options.nix
 
             ../llms/models.nix
-
 
             self.homeModules.stanton
 
