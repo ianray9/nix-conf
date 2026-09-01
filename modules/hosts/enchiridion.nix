@@ -20,6 +20,9 @@
         home-manager.users.ianrayburn = {
           imports = [
             ./options.nix
+            ../llms/options.nix
+
+            ../llms/models.nix
 
             self.homeModules.stanton
 
@@ -32,8 +35,11 @@
 
             self.homeModules.zsh
 
+            self.homeModules.llama-cpp
+            self.homeModules.opencode-docker
+            self.homeModules.opencode
+
             ../_legacy/desktop
-            ../_legacy/llms
           ];
 
           my = {

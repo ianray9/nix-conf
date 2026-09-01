@@ -20,6 +20,14 @@
       nvim.enable = true;
 
       zsh.enable = true;
+
+      llms = {
+        backend.type = "lemonade";
+        llama-cpp.enable = false;
+
+        opencode.docker.enable = true;
+        opencode.enable = true;
+      };
     };
   };
 }
